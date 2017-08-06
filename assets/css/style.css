@@ -1,0 +1,76 @@
+
+.jumbotron{
+
+	background-color: #2D414C;;
+}
+.characterframe{
+	float:left;
+	width:325px;
+	height:200px;
+	margin:10px;
+	border:2px;
+}
+.characterframe:hover{
+
+	background-color:purple;
+	opacity:0.4;
+	 
+}
+.container:after{
+  content: "";
+  display: block;
+  clear: both;
+}
+.container{
+	width:100%;
+	background-color: #2D414C;
+}
+.opponent{
+	float: right;
+}
+.panel > .panel-heading {
+    background-image: none;
+    background-color: orange;
+    color: white;
+
+}
+.circle{
+	margin:5px auto;
+	height:170px;
+	width:280px;
+	border:2px solid orange;
+	border-radius:50px 50px;
+	
+}
+.gazeem{
+background-color: white;
+	background-image: url(../images/Gazeem.jpg);
+	background-repeat: no-repeat;
+
+}
+#aladdin{
+	background-color: white;
+	background-image: url(../images/aladdin.jpg);
+	background-repeat: no-repeat;
+}
+.jafar{
+	background-color: white;
+	background-image: url(../images/Jafar_Aladdin.png);
+	background-repeat: no-repeat;
+}
+.genie{
+	background-color: white;
+	background-image: url(../images/genie.gif);
+	background-repeat: no-repeat;
+}
+.hp{
+
+	height:30px;
+	width:280px;
+	text-align: left;
+	font-size: 20px;
+	color:orange;
+	vertical-align: middle;
+	line-height: 10px;
+
+}
