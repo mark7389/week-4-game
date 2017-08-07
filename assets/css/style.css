@@ -1,76 +1,159 @@
 
 .jumbotron{
+	margin:auto;
+	background-image:url("../images/stardust.png");
+	border-radius: 15px;
+	width: 65%;
+	float: right;
+}
+body{
+font-family: 'Dancing Script', cursive;
 
-	background-color: #2D414C;;
+background-image:url("../images/Agrabah.png");
+background-size: cover;
+}
+.placeHolder{
+
+	height: 300px;
+}
+.big{
+
+	margin:20px 13%;
+}
+.game{
+	width:100%;
+	height: 900px;
+}
+.game:after{
+
+ content: "";
+  display: block;
+  clear: both;
+
 }
 .characterframe{
-	float:left;
-	width:325px;
+	
+	width:100%;
 	height:200px;
 	margin:10px;
 	border:2px;
+	
 }
 .characterframe:hover{
 
-	background-color:purple;
-	opacity:0.4;
-	 
+	/*background-color:orange;*/
+	opacity:0.6;
+}
+#ether{
+	background-image: url(../images/stardust.png);
+	height: 100%;
+	border-radius: 15px;
+	border:5px solid #2D414C;
+	
 }
 .container:after{
   content: "";
   display: block;
   clear: both;
 }
+
 .container{
 	width:100%;
+	margin:auto;
 	background-color: #2D414C;
+	border:5px solid #2D414C;
+	border-radius: 15px;
 }
-.opponent{
-	float: right;
-}
-.panel > .panel-heading {
-    background-image: none;
-    background-color: orange;
-    color: white;
+.placeHolder:after{
 
+	content: "";
+  display: block;
+  clear: both;
 }
-.circle{
-	margin:5px auto;
-	height:170px;
-	width:280px;
-	border:2px solid orange;
-	border-radius:50px 50px;
+#opponent{
+	float:left;
+	width:40%;
+}
+#hero{
+	float: left;
+	width:40%;
+}
+.col-lg-6{
+	border: none;
+	border-radius: 15px;
 	
 }
+.col-lg-4{
+	border: none;
+	
+	
+}
+.panel{
+	border:5px solid;
+	border-radius:15px;
+	color: orange;
+	font-size: 35px;
+	border-color: orange;
+	background-color: #7E5A3A;
+}
+.panel-title{
+	color: orange;
+	font-weight: bolder;
+	font-size: 50px;
+	text-indent: 10px;
+}
+.panel-heading {
+	
+	width:100%;
+	margin:0 auto 0 0;
+   
+    background-color: #2D414C;
+    color: orange;
+    border:5px solid #2D414C;
+	border-radius: 15px;
+}
+.battle{
+	margin:0;
+	background-color: #E2C8AC;
+	border-radius: 15px; 	
+	width:100%;
+}
+.circle{
+	margin:25px 25px;
+	height:170px;
+	width:90%;
+	color:orange;
+	font-size: 20px;
+	font-weight: bolder;
+	text-align: center;
+	text-indent: 120px;
+	/*vertical-align: top;*/
+	/*line-height:70px;*/
+	border:2px solid orange;
+	border-radius:50px 50px;
+}
 .gazeem{
-background-color: white;
+	
 	background-image: url(../images/Gazeem.jpg);
 	background-repeat: no-repeat;
+	background-size: cover;
 
 }
-#aladdin{
-	background-color: white;
+.aladdin{
+	
 	background-image: url(../images/aladdin.jpg);
 	background-repeat: no-repeat;
+	background-size: cover;
 }
 .jafar{
-	background-color: white;
+	background-color: #ffffff;
 	background-image: url(../images/Jafar_Aladdin.png);
 	background-repeat: no-repeat;
+	background-size: cover;
 }
 .genie{
-	background-color: white;
+	background-color: #ffffff;
 	background-image: url(../images/genie.gif);
 	background-repeat: no-repeat;
-}
-.hp{
-
-	height:30px;
-	width:280px;
-	text-align: left;
-	font-size: 20px;
-	color:orange;
-	vertical-align: middle;
-	line-height: 10px;
-
+	background-size: cover;
 }

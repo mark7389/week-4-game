@@ -8,6 +8,7 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
 	<!-- Optional theme -->
+	<link href="https://fonts.googleapis.com/css?family=Bungee+Shade|Dancing+Script:700" rel="stylesheet">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
 	<!-- Latest compiled and minified JavaScript -->
@@ -20,41 +21,40 @@
 	<script src="assets/javascript/game.js"></script>
 </head>
 <body>
-	<audio autoplay loop>
+	<!-- <audio autoplay loop>
 		<source src="assets/Aladdin(ArabianNights).mp3" type="audio/mp3">
-	</audio>
-	<div class="jumbotron">
+	</audio> -->
+	<!-- <div class="jumbotron">
 		<img class="big" src="assets/images/jumbo.jpg">
+	</div> -->
+	<div class="row game">
+	<div class="col-lg-1"></div>
+	<div class="col-lg-2" id="ether">
 	</div>
+	<div class="col-lg-6">
+	<div class="row">
 
-	<div class="panel panel-default">
-		<div class="panel-heading" id="one"></div>
-  		<div class="panel-body container">
-    		<div  class="characterframe">
-    			<div class="circle gazeem"></div>
-    			<div class="hp">150</div>
-    		</div>
-    		<div  class="characterframe" value="aladdin">
-    			<div class="circle" id="aladdin"></div>
-    			<div class="hp">150</div>
-    		</div>
-    		<div  class="characterframe"><div class="circle jafar"></div>
-    			<div class="hp">150</div>
-    		</div>
-    		<div class="characterframe">
-    		<div class="circle genie"></div>
-    		<div class="hp"></div>
-    		</div>
-  		</div>
-	</div>
-
+	<!-- <div class="placeHolder">
+		<div id="hero"></div>
+    	<div id="opponent"></div>
+	</div> -->
   	<div class="panel panel-default">
-  		<div class="panel-heading"></div>
-  		<div class="panel-body container2">
-    		<div class="characterframe" id="hero"></div>
-    		<div class="characterframe" id="opponent"></div>
+  		
+  		<div class="panel-heading">
+  			<div class="panel-title" >
+    		
+  			<h1>Pick Your Hero</h1>
+			</div>
+  			<div class="panel-body battle">
+  				<div id="hero"></div>
+    			<div id="opponent"></div>
+  			</div>
+  			
   		</div>
+  		
 	</div>
-	
+	</div>
+	</div>
+	</div>
 </body>
 </html>
