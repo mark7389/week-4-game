@@ -1,3 +1,10 @@
+// get scope to work, dynamics....
+// get button to do nothing when there is no opponent.
+// get the number values correct????
+//---------------------------------------------------------
+
+//empty character object
+//-------------------------
 var character = {
 
 	hp:"",
@@ -6,39 +13,67 @@ var character = {
 	frame:"",
 
 }
-var currentChar;
-var currentOpp;
+// static variables to catch current values
+//-------------------------------------------
+var currentChar = Object.create(character);
+var currentOpp = Object.create(character);
 var attackpower;
 
 $(document).ready(function(){
-
+//attack btn
 var btn = $("<button>").addClass("btn btn-default btn-warning");
+//instances of character object to be used in gameplay
 var aladdin = Object.create(character);
-var gazeem = Object.create(character);
+var thiago = Object.create(character);
 var jafar = Object.create(character);
 var genie = Object.create(character);
-
-aladdin = {hp: 150, attack: 30, counterattack:40};
-gazeem = {hp: 130, attack: 22, counterattack: 50};
-jafar = {hp:200, attack: 45, counterattack:60};
-genie = {hp:180,attack:35,counterattack:45}
+//setting values of character properties respectively
+aladdin = {hp: 56, attack:15 , counterattack:7};//logic...which number values to assign.
+thiago = {hp: 48, attack: 16, counterattack:8 };//try different combinations see which one works.
+jafar = {hp:60, attack: 17, counterattack:9};
+genie = {hp:62,attack:18,counterattack:10}
 aladdin.frame = $("<div>").addClass("characterframe circle aladdin").text(aladdin.hp).attr("name","aladdin").appendTo($("#ether"));
-gazeem.frame = $("<div>").addClass("characterframe circle gazeem").text(gazeem.hp).attr("name","gazeem").appendTo($("#ether"));
+thiago.frame = $("<div>").addClass("characterframe circle thiago").text(thiago.hp).attr("name","thiago").appendTo($("#ether"));
 jafar.frame = $("<div>").addClass("characterframe circle jafar").text(jafar.hp).attr("name","jafar").appendTo($("#ether"));
 genie.frame = $("<div>").addClass("characterframe circle genie").text(genie.hp).attr("name","genie").appendTo($("#ether"));			
-
+//on start
 $("#instr").text("Pick A Character");
-$(".characterframe").on("click", function(){
 
+function isWin(currentOpp){
+
+	if(currentOpp.hp < 1){
+
+		return true;
+	}
+	else{
+
+		return false;
+	}
+}
+function isLose(currentChar){
+
+	if(currentChar.hp <1 ){
+		return true;
+	}
+	else{
+
+		return false;
+	}
+
+}
+
+//click event for choosing player and opponent
+$(".characterframe").on("click", function(){//scope issue
+	//if player div is empty, choice is player
 	if($("#hero").is(":empty")){
 		switch ($(this).attr("name")){
-			case "aladdin": currentChar = aladdin; btn.text(""); attackpower = currentChar.attack;
+			case "aladdin": currentChar = aladdin; btn.text("Apple"); attackpower = currentChar.attack;
 			break;
-			case "jafar": currentChar = jafar; btn.text(""); attackpower = currentChar.attack;
+			case "jafar": currentChar = jafar; btn.text("Kill the boy"); attackpower = currentChar.attack;
 			break;
-			case "gazeem": currentChar = gazeem; btn.text(""); attackpower = currentChar.attack;
+			case "thiago": currentChar = thiago; btn.text("Whack !"); attackpower = currentChar.attack;
 			break;
-			case "genie": currentChar = genie; btn.text(""); attackpower = currentChar.attack;
+			case "genie": currentChar = genie; btn.text("Et tu Brute!"); attackpower = currentChar.attack;
 			break;
 		}
 		console.log(currentChar);
@@ -47,48 +82,60 @@ $(".characterframe").on("click", function(){
 		$("#ether").animate({height: "-=180px"},"easeInOutSine");
 		$("#instr").text("Pick An Opponent");
 	}
-	else if(!$("hero").is(":empty") && $("#opponent").is(":empty")){
+	//if opponent div is empty and player div is not empty, choice is opponent
+	else if(!$("#hero").is(":empty") && $("#opponent").is(":empty")){
 		switch ($(this).attr("name")){
 			case "aladdin": currentOpp = aladdin;
 			break;
 			case "jafar": currentOpp = jafar;
 			break;
-			case "gazeem": currentOpp = gazeem;
+			case "thiago": currentOpp = thiago;
 			break;
 			case "genie": currentOpp = genie;
 			break;
 		}
 		console.log(currentOpp);	
 		$(this).appendTo("#opponent");
-		$("#ether").animate({height: "-=180px"},"easeInOutSine");
-		$("#instr").text("Battle")
+		$("#ether").animate({height: "-=180px"},"easeInElastic");
+		$("#instr").text("Battle");
+		
 	}
+
 });
 
 btn.on("click", function(){
 
-	currentOpp.hp = currentOpp.hp - currentChar.attack;
-	currentChar.attack = currentChar.attack + attackpower;
-	currentOpp.frame.text(currentOpp.hp);
-	currentChar.hp = currentChar.hp - currentOpp.counterattack;
-	currentChar.frame.text(currentChar.hp);
-	if(currentOpp.hp <= 0){
+	if(($("#opponent").is(":empty"))){
 
-		currentOpp.hp = 0;
-		currentOpp.frame.text(currentOpp.hp);
-		$("#opponent").empty();
-		$("#instr").text("Pick Your Next Opponent")
+			$("#instr").text("Pick Your Next Opponent");
+			
 	}
-	else if(currentChar.hp <= 0){
+		//otherwise game is in play
+	else{
+		
+		
+			console.log(currentChar.hp+ " " + currentOpp.hp);
+			currentOpp.hp = currentOpp.hp - currentChar.attack;
+			currentOpp.frame.text(currentOpp.hp);
+			currentChar.attack = currentChar.attack + attackpower;
+			currentChar.hp = currentChar.hp - currentOpp.counterattack;
+			
+			currentChar.frame.text(currentChar.hp);
+			if(isWin(currentOpp)){
 
-		currentChar.hp = 0;
-		currentChar.frame.text(currentChar.hp);
-		var lose = $("<div>").text("Better Luck Next Time, " + "Refresh to play again");
-		lose.appendTo("#hero");
+				$("#hero").append("You've Killed your opponent");
+				$("#opponent").empty();
+				
+			}
+			else if(isLose(currentChar)){
+
+				$("#opponent").append("You've Lost")
+			}
+			
+		
 	}
-	
+
 });
-
 
 
 

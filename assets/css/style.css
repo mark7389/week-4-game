@@ -11,6 +11,8 @@ font-family: 'Dancing Script', cursive;
 
 background-image:url("../images/Agrabah.png");
 background-size: cover;
+
+background-attachment: fixed;
 }
 .placeHolder{
 
@@ -42,7 +44,7 @@ background-size: cover;
 .characterframe:hover{
 
 	background-color:orange;
-	opacity:0.6;
+	opacity:0.8;
 }
 #hero div:first-child:hover{
 
@@ -62,7 +64,7 @@ background-size: cover;
 }
 #opponent{
 	float:left;
-	margin-left:150px;
+	margin-left:145px;
 	
 	width:40%;
 }
@@ -128,15 +130,15 @@ background-size: cover;
 	border:2px solid orange;
 	border-radius:50px 50px;
 }
-.gazeem{
-	
-	background-image: url(../images/Gazeem.jpg);
+.thiago{
+	background-color: #ffffff;
+	background-image: url(../images/thiago.png);
 	background-repeat: no-repeat;
 	background-size: cover;
 
 }
 .aladdin{
-	
+	background-color: #ffffff;
 	background-image: url(../images/aladdin.png);
 	background-repeat: no-repeat;
 	background-size: cover;
