@@ -34,10 +34,10 @@ background-attachment: fixed;
 
 }
 .characterframe{
-	
-	width:100%;
-	height:200px;
+	float:left;
 	margin:10px;
+	width:200px;
+	height:200px;
 	border:2px;
 	
 }
@@ -57,14 +57,19 @@ background-attachment: fixed;
 }
 #ether{
 	background-image: url(../images/stardust.png);
-	height: 85%;
+	height: 50%;
 	border-radius: 15px;
 	border:5px solid #2D414C;
-	
+
+}
+#ether:after{
+	content: "";
+  display: block;
+  clear: both;
 }
 #opponent{
 	float:left;
-	margin-left:145px;
+	margin-left:100px;
 	
 	width:40%;
 }
@@ -119,9 +124,10 @@ background-attachment: fixed;
 	clear: both;
 }
 .circle{
-	margin:15px auto;
+	float:left;
+	margin:5px;
 	height:170px;
-	width:90%;
+	width:170px;
 	color:black;
 	font-size: 20px;
 	font-weight: bolder;

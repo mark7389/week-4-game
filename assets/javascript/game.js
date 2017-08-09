@@ -28,9 +28,9 @@ var thiago = Object.create(character);
 var jafar = Object.create(character);
 var genie = Object.create(character);
 //setting values of character properties respectively
-aladdin = {hp: 56, attack:15 , counterattack:7};//logic...which number values to assign.
-thiago = {hp: 48, attack: 16, counterattack:8 };//try different combinations see which one works.
-jafar = {hp:60, attack: 17, counterattack:9};
+aladdin = {hp: 56, attack:15 , counterattack:10};//logic...which number values to assign.
+thiago = {hp: 48, attack: 16, counterattack: 10};//try different combinations see which one works.
+jafar = {hp:60, attack: 17, counterattack:10};
 genie = {hp:62,attack:18,counterattack:10}
 aladdin.frame = $("<div>").addClass("characterframe circle aladdin").text(aladdin.hp).attr("name","aladdin").appendTo($("#ether"));
 thiago.frame = $("<div>").addClass("characterframe circle thiago").text(thiago.hp).attr("name","thiago").appendTo($("#ether"));
@@ -61,6 +61,17 @@ function isLose(currentChar){
 	}
 
 }
+function control(){
+
+	if(currentChar.hp < currentOpp.counterattack && currentChar.hp < currentOpp.hp){
+
+		return true;
+	}
+	else{
+
+		return false;
+	}
+}
 
 //click event for choosing player and opponent
 $(".characterframe").on("click", function(){//scope issue
@@ -79,7 +90,7 @@ $(".characterframe").on("click", function(){//scope issue
 		console.log(currentChar);
 		$(this).appendTo("#hero");		
 		btn.appendTo("#hero");
-		$("#ether").animate({height: "-=180px"},"easeInOutSine");
+		// $("#ether").animate({height: "-=75"},"easeInOutSine");
 		$("#instr").text("Pick An Opponent");
 	}
 	//if opponent div is empty and player div is not empty, choice is opponent
@@ -96,7 +107,7 @@ $(".characterframe").on("click", function(){//scope issue
 		}
 		console.log(currentOpp);	
 		$(this).appendTo("#opponent");
-		$("#ether").animate({height: "-=180px"},"easeInElastic");
+		$("#ether").animate({height: "-=12.5%"},"easeInElastic");
 		$("#instr").text("Battle");
 		
 	}
@@ -113,7 +124,7 @@ btn.on("click", function(){
 		//otherwise game is in play
 	else{
 		
-		
+			if(!control()){
 			console.log(currentChar.hp+ " " + currentOpp.hp);
 			currentOpp.hp = currentOpp.hp - currentChar.attack;
 			currentOpp.frame.text(currentOpp.hp);
@@ -121,9 +132,18 @@ btn.on("click", function(){
 			currentChar.hp = currentChar.hp - currentOpp.counterattack;
 			
 			currentChar.frame.text(currentChar.hp);
+			}
+			else{
+
+				currentOpp.hp = currentOpp.hp - currentChar.attack;
+
+			}
+			
 			if(isWin(currentOpp)){
 
 				$("#hero").append("You've Killed your opponent");
+				$("#instr").text("Pick Your Next Opponent");
+				currentOpp = "";
 				$("#opponent").empty();
 				
 			}
