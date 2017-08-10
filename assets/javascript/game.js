@@ -28,10 +28,11 @@ var thiago = Object.create(character);
 var jafar = Object.create(character);
 var genie = Object.create(character);
 //setting values of character properties respectively
-aladdin = {hp: 154, attack:16 , counterattack:24};//logic...which number values to assign.
+aladdin = {hp: 152, attack:16 , counterattack:24};//logic...which number values to assign.
 thiago = {hp: 149, attack: 18, counterattack: 23};//try different combinations see which one works.
-jafar = {hp:150, attack: 19, counterattack:22};
-genie = {hp:145,attack:17,counterattack:21}
+jafar = {hp:150, attack: 19, counterattack:22};//These are random, I am working on a case such that each character has only one winning
+											//scenario, and three losing scenarios. 
+genie = {hp:145,attack:17,counterattack:20}
 aladdin.frame = $("<div>").addClass("characterframe circle aladdin").text(aladdin.hp).attr("name","aladdin").appendTo($("#ether"));
 thiago.frame = $("<div>").addClass("characterframe circle thiago").text(thiago.hp).attr("name","thiago").appendTo($("#ether"));
 jafar.frame = $("<div>").addClass("characterframe circle jafar").text(jafar.hp).attr("name","jafar").appendTo($("#ether"));
