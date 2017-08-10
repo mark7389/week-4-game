@@ -28,10 +28,10 @@ var thiago = Object.create(character);
 var jafar = Object.create(character);
 var genie = Object.create(character);
 //setting values of character properties respectively
-aladdin = {hp: 56, attack:15 , counterattack:10};//logic...which number values to assign.
-thiago = {hp: 48, attack: 16, counterattack: 10};//try different combinations see which one works.
-jafar = {hp:60, attack: 17, counterattack:10};
-genie = {hp:62,attack:18,counterattack:10}
+aladdin = {hp: 56, attack:15 , counterattack:24};//logic...which number values to assign.
+thiago = {hp: 48, attack: 16, counterattack: 23};//try different combinations see which one works.
+jafar = {hp:60, attack: 17, counterattack:22};
+genie = {hp:62,attack:18,counterattack:21}
 aladdin.frame = $("<div>").addClass("characterframe circle aladdin").text(aladdin.hp).attr("name","aladdin").appendTo($("#ether"));
 thiago.frame = $("<div>").addClass("characterframe circle thiago").text(thiago.hp).attr("name","thiago").appendTo($("#ether"));
 jafar.frame = $("<div>").addClass("characterframe circle jafar").text(jafar.hp).attr("name","jafar").appendTo($("#ether"));
@@ -124,7 +124,15 @@ btn.on("click", function(){
 		//otherwise game is in play
 	else{
 		
-			if(!control()){
+			if(!isWin(currentOpp) && !isLose(currentChar)){
+			if(currentChar.hp < currentOpp.hp && currentChar.hp < currentOpp.counterattack){
+
+				currentOpp.hp = currentOpp.hp + currentChar.attack;
+			}
+			else if(currentOpp.hp < currentChar.hp && currentOpp.hp < currentChar.attack){
+
+				currentChar.hp = currentChar.hp + currentOpp.counterattack;
+			}
 			console.log(currentChar.hp+ " " + currentOpp.hp);
 			currentOpp.hp = currentOpp.hp - currentChar.attack;
 			currentOpp.frame.text(currentOpp.hp);
@@ -132,25 +140,39 @@ btn.on("click", function(){
 			currentChar.hp = currentChar.hp - currentOpp.counterattack;
 			
 			currentChar.frame.text(currentChar.hp);
-			}
-			else{
-
-				currentOpp.hp = currentOpp.hp - currentChar.attack;
-
-			}
-			
-			if(isWin(currentOpp)){
+				if(isWin(currentOpp)){
 
 				$("#hero").append("You've Killed your opponent");
 				$("#instr").text("Pick Your Next Opponent");
 				currentOpp = "";
 				$("#opponent").empty();
-				
-			}
+				}
+		
 			else if(isLose(currentChar)){
 
-				$("#opponent").append("You've Lost")
+				$("#opponent").append("You've Lost, refresh to try again")
 			}
+
+			}
+		
+			
+
+				// currentOpp.hp = currentOpp.hp - currentChar.attack;
+			
+		
+			
+			// if(isWin(currentOpp)){
+
+			// 	$("#hero").append("You've Killed your opponent");
+			// 	$("#instr").text("Pick Your Next Opponent");
+			// 	currentOpp = "";
+			// 	$("#opponent").empty();
+				
+			// }
+			// else if(isLose(currentChar)){
+
+			// 	$("#opponent").append("You've Lost")
+			// }
 			
 		
 	}
