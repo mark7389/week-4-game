@@ -18,7 +18,7 @@ var character = {
 var currentChar = Object.create(character);
 var currentOpp = Object.create(character);
 var attackpower;
-
+var winCounter = 0;
 $(document).ready(function(){
 //attack btn
 var btn = $("<button>").addClass("btn btn-default btn-warning");
@@ -146,12 +146,19 @@ btn.on("click", function(){
 				$("#hero").append("You've Killed your opponent");
 				$("#instr").text("Pick Your Next Opponent");
 				currentOpp = "";
+				winCounter++;
 				$("#opponent").empty();
+				if(winCounter == 3){
+					$("#instr").text("Congratulations");
+					$("#ether").animate({height: "+=15%"}, "easeInOutSine");
+					$("<div>").text("YOU BEAT THEM ALL!! Refresh to play again").css({"font-size": "25px", "color": "orange"}).appendTo("#ether");
+				}
 				}
 		
 			else if(isLose(currentChar)){
 
-				$("#opponent").append("You've Lost, refresh to try again")
+				$("#opponent").append("You've Lost, refresh to try again");
+				$("#instr").text("Game Over");
 			}
 
 			}
